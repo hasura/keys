@@ -1211,7 +1211,7 @@ instance Ord k => Lookup (Map k) where
 instance FoldableWithKey (Map k) where
   foldrWithKey = Map.foldrWithKey
 
-instance TraversableWithKey (Map k) where
+instance Ord k => TraversableWithKey (Map k) where
   traverseWithKey f = fmap Map.fromDistinctAscList . traverse (\(k, v) -> (,) k <$> f k v) . Map.toAscList
 
 instance Ord k => Adjustable (Map k) where
